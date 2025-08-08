@@ -45,6 +45,8 @@ public class SampleTest {
 
     @Test
     public void testEmptyInputDoesNotChangeText() {
+        var notChangedText = "Hello UiAutomator!";
+
         WebElement el1 = driver.findElement(By.id("ru.netology.testing.uiautomator:id/userInput"));
         el1.isDisplayed();
         el1.sendKeys("  ");
@@ -57,15 +59,16 @@ public class SampleTest {
         el3.isDisplayed();
         el3.click();
 
-        assertEquals("Hello UiAutomator!", el3.getText());
+        assertEquals(notChangedText, el3.getText());
     }
 
     @Test
     public void testNewActivityShowsCorrectText() {
+        var changedText = "Hello from test";
 
         WebElement el1 = driver.findElement(By.id("ru.netology.testing.uiautomator:id/userInput"));
         el1.isDisplayed();
-        el1.sendKeys("Hello from test");
+        el1.sendKeys(changedText);
 
         WebElement el2 = driver.findElement(By.id("ru.netology.testing.uiautomator:id/buttonActivity"));
         el2.isDisplayed();
@@ -77,7 +80,7 @@ public class SampleTest {
         el3.isDisplayed();
         el3.click();
 
-        assertEquals("Hello from test", el3.getText());
+        assertEquals(changedText, el3.getText());
     }
 
     @After
